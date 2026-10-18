@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claim Your Free Dessert</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="card">
+  <div class="pumpkin" aria-hidden="true">🎃</div>
+  <h1>CLAIM YOUR<br>FREE DESSERT</h1>
+  <p class="sub">Trick or Treat! Complete the steps below to unlock your treat.</p>
+
+  <button id="btn1" class="btn step" data-url="https://www.facebook.com/YOUR_PAGE">
+    <span class="label">1. Follow us on Facebook</span><span class="status"></span>
+  </button>
+  <button id="btn2" class="btn step" data-url="https://www.instagram.com/YOUR_PAGE">
+    <span class="label">2. Follow us on Instagram</span><span class="status"></span>
+  </button>
+  <button id="btn3" class="btn claim" disabled>
+    <span class="label">🔒 3. Claim Dessert</span>
+  </button>
+
+  <details class="terms">
+    <summary>Terms and Conditions</summary>
+    <ul>
+      <li>You must complete steps 1 and 2 before the dessert can be claimed.</li>
+      <li>One free dessert per person.</li>
+      <li>The unique code must be presented to our staff to redeem.</li>
+      <li>Offer valid while supplies last and may be changed or withdrawn at any time.</li>
+    </ul>
+  </details>
+</main>
+
+<div id="modal" class="overlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <h2 id="mTitle">🎉 Congratulations!</h2>
+    <p>Please present this to our staff.</p>
+    <p>Here's your unique code:</p>
+    <div class="code">DMS_TRICKORTREAT</div>
+    <button id="close" class="btn">Close</button>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
