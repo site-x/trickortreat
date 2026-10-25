@@ -1,12 +1,13 @@
 const DURATION = 15;
-const steps = [document.getElementById('btn1'), document.getElementById('btn2')];
-const claim = document.getElementById('btn3');
+const steps = [...document.querySelectorAll('.step')];
+const claim = document.getElementById('claim');
 const modal = document.getElementById('modal');
 
+// Unlocks as soon as any one follow is verified; the others stay optional
 function updateClaim() {
-  const ready = steps.every(b => b.classList.contains('done'));
+  const ready = steps.some(b => b.classList.contains('done'));
   claim.disabled = !ready;
-  claim.querySelector('.label').textContent = (ready ? '🎁 ' : '🔒 ') + '3. Claim Dessert';
+  claim.querySelector('.label').textContent = ready ? '🎁 Claim Your Free Dessert' : '🔒 Locked';
 }
 
 steps.forEach(btn => {
