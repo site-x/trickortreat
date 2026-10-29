@@ -25,7 +25,7 @@
     <span class="brand-small">Singapore · dal 1870</span>
   </div>
 
-  <div class="pumpkin" aria-hidden="true">🎃</div>
+  <img class="emblem" src="images/emblem.webp" alt="Da Michele emblem" width="592" height="600">
   <h1>Trick or Treat!</h1>
   <p class="sub">Follow <strong>any one</strong> of our pages to unlock your <strong>free dessert</strong>.</p>
 
@@ -51,18 +51,29 @@
       <li>Valid for dine-in customers only with the purchase of at least one à la carte dish.</li>
       <li>Limited to one free dessert per receipt.</li>
       <li>A unique redemption code must be presented to our staff to redeem the free dessert.</li>
-      <li>Valid until 7 November 2026 only.</li>
+      <li>Valid until 31 December 2026 only.</li>
     </ul>
   </details>
 </main>
 
 <div id="modal" class="overlay" hidden>
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
-    <div class="pumpkin small" aria-hidden="true">🍰</div>
+    <img class="dessert-icon" src="images/ice-cream.webp" alt="Ice cream" width="548" height="600">
     <h2 id="mTitle">Treat Unlocked!</h2>
     <p>Please present this code to our staff.</p>
     <div class="code">DMS_TRICKORTREAT</div>
-    <p class="fine">Dine-in only · Min. one à la carte dish · Valid until 7 Nov 2026</p>
+    <p class="control">Control No. <span id="controlNo"></span></p>
+    <p class="fine">Dine-in only · Min. one à la carte dish · Valid until 31 Dec 2026</p>
+    <details class="terms">
+      <summary>READ MORE</summary>
+      <ul>
+        <li>Follow at least one of our official Facebook, Instagram, or TikTok pages to claim your free dessert.</li>
+        <li>Valid for dine-in customers only with the purchase of at least one à la carte dish.</li>
+        <li>Limited to one free dessert per receipt.</li>
+        <li>A unique redemption code must be presented to our staff to redeem the free dessert.</li>
+        <li>Valid until 31 December 2026 only.</li>
+      </ul>
+    </details>
     <button id="close" class="btn">Close</button>
   </div>
 </div>
