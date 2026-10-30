@@ -21,10 +21,7 @@ body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:c
 .web-l{left:0;border-top-left-radius:20px}
 .web-r{right:0;transform:scaleX(-1);border-top-left-radius:20px}
 
-.brand{display:flex;flex-direction:column;align-items:center;gap:2px;margin-bottom:6px}
-.brand-small{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#d9c8b0}
-.brand-name{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:700;
-  font-size:40px;line-height:1.05;color:var(--cream);text-shadow:0 2px 0 var(--red)}
+.brand{display:block;width:238px;max-width:80%;height:auto;margin:0 auto 6px}
 
 .emblem{display:block;width:150px;max-width:60%;height:auto;margin:0 auto;filter:drop-shadow(0 0 14px rgba(255,122,26,.7))}
 .dessert-icon{display:block;width:120px;max-width:50%;height:auto;margin:0 auto;filter:drop-shadow(0 0 14px rgba(255,122,26,.7))}
@@ -40,10 +37,10 @@ h1{font-family:Creepster,cursive;font-weight:400;margin:4px 0 6px;font-size:44px
 .btn:active:not(:disabled){transform:scale(.98)}
 .step{background:#2a1418;border:1.5px solid #4a2228;text-align:left}
 .step:hover:not(.done){box-shadow:0 0 0 2px var(--orange)}
-.step .label::before{display:inline-grid;place-items:center;flex:none;width:24px;height:24px;margin-right:10px;border-radius:6px}
-.fb .label::before{content:'f';background:#1877f2;font-weight:700}
-.ig .label::before{content:'◎';background:linear-gradient(45deg,#f09433,#dc2743,#bc1888)}
-.tt .label::before{content:'♪';background:#000;box-shadow:-2px 0 #25f4ee,2px 0 #fe2c55}
+.step .label::before{content:'';display:inline-block;flex:none;width:24px;height:24px;margin-right:10px;border-radius:6px;background:center/cover no-repeat}
+.fb .label::before{background-image:url('images/social/facebook.webp')}
+.ig .label::before{background-image:url('images/social/instagram.webp')}
+.tt .label::before{background-image:url('images/social/tiktok.webp')}
 .label{display:flex;align-items:center}
 .status{font-size:13px;color:var(--orange);white-space:nowrap}
 .step.verifying{opacity:.85;cursor:wait}
@@ -74,4 +71,4 @@ h1{font-family:Creepster,cursive;font-weight:400;margin:4px 0 6px;font-size:44px
 .modal .terms{margin-top:14px;text-align:left;font-size:12.5px;color:var(--ink);border-top:1px dashed #b89a86}
 .modal .terms summary{color:var(--red);text-align:center}
 
-@media (max-width:380px){.brand-name{font-size:34px}h1{font-size:38px}.moon{width:60px;height:60px}}
+@media (max-width:380px){h1{font-size:38px}.moon{width:60px;height:60px}}

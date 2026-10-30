@@ -33,9 +33,12 @@ steps.forEach(btn => {
   });
 });
 
-// Random 6-digit control number, regenerated every time the treat is unlocked
+// Random 4-character control number (letters and digits), regenerated every time the treat is unlocked
 function newControlNumber() {
-  return String(Math.floor(100000 + Math.random() * 900000));
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code = '';
+  for (let i = 0; i < 4; i++) code += chars[Math.floor(Math.random() * chars.length)];
+  return code;
 }
 
 // Burst of confetti on the first claim only (skipped if the viewer prefers reduced motion)
