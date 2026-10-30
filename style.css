@@ -10,6 +10,9 @@ body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:c
   background:radial-gradient(circle at 35% 35%,#fff7da,#f2c66d 70%);box-shadow:0 0 60px 15px rgba(255,190,90,.35)}
 .bat{position:absolute;font-size:26px;filter:brightness(0);animation:fly 9s ease-in-out infinite}
 .b1{top:12%;left:10%}.b2{top:22%;left:70%;animation-delay:-3s;font-size:20px}.b3{top:40%;left:5%;animation-delay:-6s;font-size:18px}
+.b4{top:6%;left:42%;animation-delay:-1.5s;font-size:22px}.b5{top:58%;left:84%;animation-delay:-4.5s;font-size:24px}
+.b6{top:76%;left:12%;animation-delay:-7.5s;font-size:20px}.b7{top:86%;left:72%;animation-delay:-2s;font-size:26px}
+.b8{top:33%;left:88%;animation-delay:-5.5s;font-size:16px}
 @keyframes fly{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-25px)}}
 
 /* Card */

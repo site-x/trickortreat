@@ -10,11 +10,31 @@ function updateClaim() {
   claim.querySelector('.label').textContent = ready ? '🎁 Claim Your Free Dessert' : '🔒 Locked';
 }
 
+// Completed follows are remembered per browser, keyed by the social link
+const DONE_KEY = 'doneSteps';
+function loadDone() {
+  try { return JSON.parse(localStorage.getItem(DONE_KEY)) || []; } catch (e) { return []; }
+}
+function saveDone(url) {
+  try {
+    localStorage.setItem(DONE_KEY, JSON.stringify([...new Set([...loadDone(), url])]));
+  } catch (e) { /* storage blocked: the follow is only remembered for this page load */ }
+}
+function markDone(btn) {
+  btn.classList.remove('verifying');
+  btn.classList.add('done');
+  btn.querySelector('.status').textContent = 'Completed ✔';
+}
+
+const done = loadDone();
 steps.forEach(btn => {
   const status = btn.querySelector('.status');
+  if (done.includes(btn.dataset.url)) markDone(btn);
+
   btn.addEventListener('click', () => {
-    if (btn.classList.contains('verifying') || btn.classList.contains('done')) return;
+    // Always open the link, so a completed platform can still be visited
     window.open(btn.dataset.url, '_blank', 'noopener');
+    if (btn.classList.contains('verifying') || btn.classList.contains('done')) return;
     btn.classList.add('verifying');
     let left = DURATION;
     status.textContent = `Verifying... ${left}s`;
@@ -24,21 +44,37 @@ steps.forEach(btn => {
         status.textContent = `Verifying... ${left}s`;
       } else {
         clearInterval(timer);
-        btn.classList.remove('verifying');
-        btn.classList.add('done');
-        status.textContent = 'Done ✔';
+        markDone(btn);
+        saveDone(btn.dataset.url);
         updateClaim();
       }
     }, 1000);
   });
 });
+updateClaim();
 
-// Random 4-character control number (letters and digits), regenerated every time the treat is unlocked
+// Random 4-character control number (letters and digits). Generated once per browser and kept,
+// so it only changes on a new device or after the browser's site data is cleared.
+const CONTROL_KEY = 'controlNo';
+let memoryControlNo = null;
 function newControlNumber() {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   let code = '';
   for (let i = 0; i < 4; i++) code += chars[Math.floor(Math.random() * chars.length)];
   return code;
+}
+function controlNumber() {
+  try {
+    const saved = localStorage.getItem(CONTROL_KEY);
+    if (saved) return saved;
+    const code = newControlNumber();
+    localStorage.setItem(CONTROL_KEY, code);
+    return code;
+  } catch (e) {
+    // Storage blocked (e.g. private mode): keep one number for this page load only
+    memoryControlNo ??= newControlNumber();
+    return memoryControlNo;
+  }
 }
 
 // Burst of confetti on the first claim only (skipped if the viewer prefers reduced motion)
@@ -91,7 +127,7 @@ function fireConfetti() {
 
 claim.addEventListener('click', () => {
   if (claim.disabled) return;
-  document.getElementById('controlNo').textContent = newControlNumber();
+  document.getElementById('controlNo').textContent = controlNumber();
   modal.hidden = false;
   fireConfetti();
 });
